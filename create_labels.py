@@ -222,7 +222,7 @@ def diff(path=path):
       files=os.listdir(path[i])
       img1 = otsu(img=path[i]+'/'+files[0])
       img2=otsu(img=path[i]+'/'+files[1])
-      cmap=cv2.subtract(img2,img1)
+      cmap=cv2.absdiff(img2,img1)
       tmp=cv2.imwrite(labels[i]+'/cmap.png',cmap)
       print(i)
 
