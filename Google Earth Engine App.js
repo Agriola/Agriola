@@ -1,4 +1,4 @@
-var gfc2019 = ee.Image("UMD/hansen/global_forest_change_2019_v1_7")
+var gfc2020 = ee.Image("UMD/hansen/global_forest_change_2020_v1_8")
 var gsw = ee.Image("JRC/GSW1_0/GlobalSurfaceWater");
 var delta=ee.Geometry.Polygon(
         [[[30.469643638427883, 31.450819992635658],
@@ -14,9 +14,9 @@ var delta=ee.Geometry.Polygon(
           [31.930825279052883, 31.488301723179053],
           [31.392495200927883, 31.50235350217253],
           [30.958535239990383, 31.57726064620009]]]);
-var lossImage = gfc2019.select(['loss']);
+var lossImage = gfc2020.select(['loss']);
 var lossAreaImage = lossImage.multiply(ee.Image.pixelArea());
-var lossYear = gfc2019.select(['lossyear']);
+var lossYear = gfc2020.select(['lossyear']);
 var occurrence = gsw.select('occurrence');
 
 
@@ -499,9 +499,9 @@ controlPanel.add(makeLegend2(viridis))
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //add layers of losses
-var treeCover = gfc2019.select(['treecover2000']);
-var lossImage = gfc2019.select(['loss']);
-var gainImage = gfc2019.select(['gain']);
+var treeCover = gfc2020.select(['treecover2000']);
+var lossImage = gfc2020.select(['loss']);
+var gainImage = gfc2020.select(['gain']);
 var VIS_OCCURRENCE = {
   min:0,
   max:100,
